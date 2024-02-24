@@ -38,12 +38,21 @@ public class LanguageModel {
 
     // Computes and sets the probabilities (p and cp fields) of all the
 	// characters in the given list. */
-	public void calculateProbabilities(List probs) {				
-		// Your code goes here
+	public void calculateProbabilities(List probs) 
+    {				
+		int n = probs.getSize();
+        ListIterator it = probs.listIterator(0);
+        while (it.hasNext()) 
+        {
+            it.current.cp.p = (it.current.cp.count)/n;
+            it.current = it.current.next;
+        }
 	}
 
     // Returns a random character from the given probabilities list.
-	public char getRandomChar(List probs) {
+	public char getRandomChar(List probs) 
+    {
+        return 'i';
 		// Your code goes here
 	}
 
@@ -54,8 +63,10 @@ public class LanguageModel {
 	 * @param numberOfLetters - the size of text to generate
 	 * @return the generated text
 	 */
-	public String generate(String initialText, int textLength) {
+	public String generate(String initialText, int textLength) 
+    {
 		// Your code goes here
+        return "hi";
 	}
 
     /** Returns a string representing the map of this language model. */
@@ -68,7 +79,15 @@ public class LanguageModel {
 		return str.toString();
 	}
 
-    public static void main(String[] args) {
-		// Your code goes here
+    public static void main(String[] args) 
+    {
+		List q = new List();
+        String str = "committe_";
+        for (int i =str.length()-1; i>=0; i--)
+        {
+            q.update(str.charAt(i));
+        }
+        // calculateProbabilities(q);
+        System.out.println(q.toString());
     }
 }
