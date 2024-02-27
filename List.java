@@ -159,7 +159,7 @@ public class List {
         }
         else
         {
-            while (c<=index)
+            while (c<index)
             {
                 current = current.next;
                 c++;
