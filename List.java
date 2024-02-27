@@ -54,12 +54,24 @@ public class List {
     public String toString() 
     {
         ListIterator it = new ListIterator(first);
-        String res = "";
-        while (it.hasNext()) 
-        {
-            res+= it.next().toString();
+        if (size == 0) {
+            return "()";
         }
-        return res;
+        String str = "(";
+        Node current = first;
+        while (current != null) {
+            if (current.next == null)
+            {
+                str += current.cp.toString();
+            }
+            else {
+                str += current.cp.toString() + " ";
+            }
+            
+            current = current.next;
+        }
+        str += ")";
+        return str.toString();
     }
 
     /** Returns the index of the first CharData object in this list
