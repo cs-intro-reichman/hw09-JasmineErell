@@ -182,4 +182,14 @@ public class List {
         // Returns an iterator that starts in that element
 	    return new ListIterator(current);
     }
+    public int countLetters()
+    {
+        ListIterator it = this.listIterator(0);
+        int c = 0;
+        while (it.hasNext()) 
+        {
+            c += (it.next().count);
+        }
+        return c;
+    }
 }
