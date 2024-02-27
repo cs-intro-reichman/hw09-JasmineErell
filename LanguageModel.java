@@ -107,7 +107,7 @@ public class LanguageModel {
         {
             return initialText;
         }
-        String window=initialText.substring(initialText.length() - windowLength);
+        String window=initialText.substring(initialText.length() - windowLength); 
         String promp =window;
         while (promp.length()<textLength + windowLength)
         {
