@@ -59,7 +59,6 @@ public class LanguageModel {
         }
         
 	}
-    
 
     // Computes and sets the probabilities (p and cp fields) of all the
 	// characters in the given list. */
@@ -108,19 +107,19 @@ public class LanguageModel {
         {
             return initialText;
         }
-        String window=initialText.substring(initialText.length() - windowLength); 
-        String promp =window;
-        while (promp.length()<textLength + windowLength)
+        String window=initialText.substring(initialText.length() - windowLength);
+        String generated=window;
+        while (generated.length()<textLength + windowLength)
         {
-            List q = CharDataMap.get(window);
-            if (q == null)
-            {
-                return window;
+            List probs = CharDataMap.get(window);
+            if (probs == null){
+               return window;
             }
-            char c = getRandomChar(q);
-            promp=promp+c;
+            char c = getRandomChar(probs);
+            generated=generated+c;
+            window = generated.substring(generated.length() - windowLength);
         }
-        return promp;
+        return generated;
 	}
 
     /** Returns a string representing the map of this language model. */
